@@ -24,23 +24,6 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from skopt import BayesSearchCV
 from sklearn import tree
 
-#from sklearn.linear_model import LinearRegression
-
-# %% 1. Load in the data. This can be done in a number of ways.
-#   e.g. dataFrame = pd.read_csv('path to data file')
-
-# path =  './bookData.csv'
-
-# with open(path, 'r', encoding='utf-8', errors='ignore') as infile, open(path + 'enc.csv', 'w') as outfile:
-#       inputs = csv.reader(infile)
-#       output = csv.writer(outfile)
-
-#       for index, row in enumerate(inputs):
-#           # Create file with no header
-#           if index == 0:
-#               continue
-#           output.writerow(row)
-
 bookData = pd.read_csv('./bookDataenc.csv')
 
 #%%Generate text-complexity predictors from book description##
@@ -272,7 +255,6 @@ for row in keyword4Splits:
 bookData['Keywords9-12'] = percKeyFound4
 
 
-
 # keyWordsBabyTwo = ["board", "toddler", "fun", "parent", "baby", "babies", "learn", "little", "find", "touch", "feel"]
 # keyWordsThreeFive = ["toddler", "story", "make", "reader", "help", "first", "learn", "little", "find", "touch", "feel"]
 # keyWordsSixEight = ["fun","learn", "children", "story", "make", "reader", "help", "find", "world", "series", "friend"]
@@ -485,14 +467,3 @@ params = {'n_neighbors':[1,2,3,4,5]}
 opt = BayesSearchCV(mdl, params, cv = crossValObj, verbose = 5, n_iter = 10)
 searchResults = opt.fit(xTrainValid, yTrainValid.value.ravel())
 
-# %% 6. Compare your Model to the Baseline
-#   Use the appropriate performance metrics where appropriate.
-#   Classification - Accuracy, Precision, Recall, F1 score, AUC, ROC, etc.
-#   Regression - MSE, Error distributions, R-squared
-
-
-# %% 7. Add Complexity if Required
-
-# %% 8. Repeat the Analysis as required
-
-# %% 9. Answer the Question
